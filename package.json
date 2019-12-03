@@ -11,7 +11,7 @@
     "dev": "nodemon -i \"*.test.js\" .",
     "prod": "cross-env NODE_ENV=production nodemon -i \"*.test.js\" -r dotenv-safe/config .",
     "lint": "eslint src",
-    "docs": "apidoc -i src -o docs && apidoc-markdown -p docs -o DOCS.md",
+    "docs": "apidoc -i src -o docs && apidoc-markdown -p docs -o DOCS.md && apidoc-postman -i src -o docs",
     "postdocs": "opn docs/index.html"
   },
   "jest": {
@@ -40,6 +40,8 @@
     "supertest": "3.0.0"
   },
   "dependencies": {
+    "@panz3r/apidoc-postman": "2.0.1",
+    "@sendgrid/mail": "6.3.1",
     "babel-core": "6.26.0",
     "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-es2015": "6.24.1",
@@ -64,7 +66,6 @@
     "querymen": "2.1.3",
     "rand-token": "0.4.0",
     "request": "2.83.0",
-    "request-promise": "4.2.2",
-    "@sendgrid/mail": "6.3.1"
+    "request-promise": "4.2.2"
   }
 }
