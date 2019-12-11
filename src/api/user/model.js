@@ -25,8 +25,7 @@ const userSchema = new Schema(
     },
     type: {
       type: String,
-      enum: types,
-      required: true
+      enum: types
     },
     name: {
       type: String,
