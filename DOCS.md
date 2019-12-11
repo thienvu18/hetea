@@ -12,6 +12,13 @@
 	- [Submit password](#submit-password)
 	- [Verify token](#verify-token)
 	
+- [Tutor](#tutor)
+	- [Create tutor](#create-tutor)
+	- [Delete tutor](#delete-tutor)
+	- [Retrieve tutor](#retrieve-tutor)
+	- [Retrieve tutors](#retrieve-tutors)
+	- [Update tutor](#update-tutor)
+	
 - [User](#user)
 	- [Create user](#create-user)
 	- [Delete user](#delete-user)
@@ -104,6 +111,87 @@
 
 	GET /password-resets/:token
 
+
+# Tutor
+
+## Create tutor
+
+
+
+	POST /tutors
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>master access token.</p>							|
+| user_id			| String			|  <p>Tutor's user_id.</p>							|
+| address			| String			| **optional** <p>Tutor's address.</p>							|
+| bio			| String			| **optional** <p>Tutor's bio.</p>							|
+| skills			| String[]			| **optional** <p>Tutor's skills.</p>							|
+| pricePerHour			| Number			| **optional** <p>Tutor's pricePerHour.</p>							|
+| tagline			| String			| **optional** <p>Tutor's tagline.</p>							|
+| rating			| Number			| **optional** <p>Tutor's rating.</p>							|
+| taughtContract			| String[]			| **optional** <p>Tutor's taughtContract.</p>							|
+
+## Delete tutor
+
+
+
+	DELETE /tutors/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>master access token.</p>							|
+
+## Retrieve tutor
+
+
+
+	GET /tutors/:id
+
+
+## Retrieve tutors
+
+
+
+	GET /tutors
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Update tutor
+
+
+
+	PUT /tutors/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>master access token.</p>							|
+| user_id			| String			|  <p>Tutor's user_id.</p>							|
+| address			| String			| **optional** <p>Tutor's address.</p>							|
+| bio			| String			| **optional** <p>Tutor's bio.</p>							|
+| skills			| String[]			| **optional** <p>Tutor's skills.</p>							|
+| pricePerHour			| Number			| **optional** <p>Tutor's pricePerHour.</p>							|
+| tagline			| String			| **optional** <p>Tutor's tagline.</p>							|
+| rating			| Number			| **optional** <p>Tutor's rating.</p>							|
+| taughtContract			| String[]			| **optional** <p>Tutor's taughtContract.</p>							|
 
 # User
 
