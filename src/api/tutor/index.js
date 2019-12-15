@@ -1,8 +1,11 @@
 import { Router } from "express";
 import { middleware as query } from "querymen";
 import { middleware as body } from "bodymen";
-import { master } from "../../services/passport";
-import { create, index, show, update, destroy } from "./controller";
+import {
+  master,
+  token
+} from "../../services/passport";
+import { create, index, show, showMe, update, destroy } from "./controller";
 import { schema } from "./model";
 export Tutor, { schema } from "./model";
 
@@ -63,6 +66,17 @@ router.post(
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
 router.get("/", query(), index);
+
+/**
+ * @api {get} /tutors/me Retrieve current tutor
+ * @apiName RetrieveCurrentTutor
+ * @apiGroup Tutor
+ * @apiPermission user
+ * @apiParam {String} access_token User access_token.
+ * @apiParam {String} user_id Tutor's user_id.
+ * @apiSuccess {Object} tutor Tutor's data.
+ */
+router.get("/me", token({ required: true }), showMe);
 
 /**
  * @api {get} /tutors/:id Retrieve tutor

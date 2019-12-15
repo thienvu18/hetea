@@ -25,6 +25,19 @@ export const show = ({ params }, res, next) =>
     .then(success(res))
     .catch(next)
 
+export const showMe = ({ user }, res, next) => {
+  console.log(user);
+  const userId = user._id
+  Tutor.find({ user_id: userId })
+    .then(notFound(res))
+    .then((tutors) => {
+      if (tutors.length <= 0) return null;
+      return tutors[0].view(true);
+    })
+    .then(success(res))
+    .catch(next);
+};
+
 export const update = ({ bodymen: { body }, params }, res, next) =>
   Tutor.findById(params.id)
     .then(notFound(res))

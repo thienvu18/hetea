@@ -15,6 +15,7 @@
 - [Tutor](#tutor)
 	- [Create tutor](#create-tutor)
 	- [Delete tutor](#delete-tutor)
+	- [Retrieve current tutor](#retrieve-current-tutor)
 	- [Retrieve tutor](#retrieve-tutor)
 	- [Retrieve tutors](#retrieve-tutors)
 	- [Update tutor](#update-tutor)
@@ -147,6 +148,20 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>master access token.</p>							|
+
+## Retrieve current tutor
+
+
+
+	GET /tutors/me
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>User access_token.</p>							|
+| user_id			| String			|  <p>Tutor's user_id.</p>							|
 
 ## Retrieve tutor
 
