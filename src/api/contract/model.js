@@ -1,28 +1,26 @@
 import mongoose, { Schema } from "mongoose";
-import { Tutor } from "../tutor";
-import { Tutee } from "../tutee";
 
 const status = ["created", "confirm", "done"];
 
 const contractSchema = new Schema(
   {
     tutor: {
-      type: String
+      type: Object
     },
     tutee: {
       type: String
     },
     hours: {
-      type: Number
+      type: String
     },
     price: {
-      type: Number
+      type: String
     },
     startDate: {
-      type: Date
+      type: String
     },
     endDate: {
-      type: Date
+      type: String
     },
     status: {
       type: String,
