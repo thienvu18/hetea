@@ -25,13 +25,13 @@ const { email, password, type, name, picture, role } = schema.tree;
  * @api {get} /users Retrieve users
  * @apiName RetrieveUsers
  * @apiGroup User
- * @apiPermission user
- * @apiParam {String} access_token User access_token.
+ * @apiPermission master
+ * @apiParam {String} access_token Master access_token.
  * @apiUse listParams
  * @apiSuccess {Object[]} users List of users.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
-router.get("/", token({ required: true }), query(), index);
+router.get("/", master(), query(), index);
 
 /**
  * @api {get} /users/me Retrieve current user

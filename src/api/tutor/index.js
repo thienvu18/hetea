@@ -1,10 +1,7 @@
 import { Router } from "express";
 import { middleware as query } from "querymen";
 import { middleware as body } from "bodymen";
-import {
-  master,
-  token
-} from "../../services/passport";
+import { master, token } from "../../services/passport";
 import { create, index, show, showMe, update, destroy } from "./controller";
 import { schema } from "./model";
 export Tutor, { schema } from "./model";
@@ -60,12 +57,14 @@ router.post(
  * @api {get} /tutors Retrieve tutors
  * @apiName RetrieveTutors
  * @apiGroup Tutor
+ * @apiPermission master
+ * @apiParam {String} access_token Master access_token.
  * @apiUse listParams
  * @apiSuccess {Number} count Total amount of tutors.
  * @apiSuccess {Object[]} rows List of tutors.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
-router.get("/", query(), index);
+router.get("/", master(), query(), index);
 
 /**
  * @api {get} /tutors/me Retrieve current tutor
