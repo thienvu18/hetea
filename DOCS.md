@@ -171,9 +171,11 @@
 | access_token			| String			|  <p>user access token.</p>							|
 | tutor			| String			|  <p>Contract's tutor.</p>							|
 | tutee			| String			|  <p>Contract's tutee.</p>							|
-| Number			| 			| **optional** <p>hours Contract's hours.</p>							|
-| Date			| 			| **optional** <p>startDate Contract's startDate.</p>							|
-| String			| 			| **optional** <p>status Contract's status.</p>							|
+| hours			| Number			| **optional** <p>Contract's hours.</p>							|
+| price			| Number			| **optional** <p>Contract's price.</p>							|
+| startDate			| Date			| **optional** <p>Contract's startDate.</p>							|
+| endDate			| Date			| **optional** <p>Contract's endDate.</p>							|
+| status			| String			| **optional** <p>Contract's status.</p>							|
 
 # PasswordReset
 

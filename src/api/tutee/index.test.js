@@ -20,10 +20,10 @@ beforeEach(async () => {
 test('POST /tutees 201 (master)', async () => {
   const { status, body } = await request(app())
     .post(`${apiRoot}`)
-    .send({ access_token: masterKey, user: 'test', address: 'test' })
+    .send({ access_token: masterKey, user_id: 'test', address: 'test' })
   expect(status).toBe(201)
   expect(typeof body).toEqual('object')
-  expect(body.user).toEqual('test')
+  expect(body.user_id).toEqual('test')
   expect(body.address).toEqual('test')
 })
 
@@ -47,20 +47,13 @@ test('POST /tutees 401', async () => {
   expect(status).toBe(401)
 })
 
-test('GET /tutees 200 (admin)', async () => {
+test('GET /tutees 200 (user)', async () => {
   const { status, body } = await request(app())
     .get(`${apiRoot}`)
-    .query({ access_token: adminSession })
+    .query({ access_token: userSession })
   expect(status).toBe(200)
   expect(Array.isArray(body.rows)).toBe(true)
   expect(Number.isNaN(body.count)).toBe(false)
-})
-
-test('GET /tutees 401 (user)', async () => {
-  const { status } = await request(app())
-    .get(`${apiRoot}`)
-    .query({ access_token: userSession })
-  expect(status).toBe(401)
 })
 
 test('GET /tutees 401', async () => {
@@ -94,11 +87,11 @@ test('GET /tutees/:id 404 (user)', async () => {
 test('PUT /tutees/:id 200 (user)', async () => {
   const { status, body } = await request(app())
     .put(`${apiRoot}/${tutee.id}`)
-    .send({ access_token: userSession, user: 'test', address: 'test' })
+    .send({ access_token: userSession, user_id: 'test', address: 'test' })
   expect(status).toBe(200)
   expect(typeof body).toEqual('object')
   expect(body.id).toEqual(tutee.id)
-  expect(body.user).toEqual('test')
+  expect(body.user_id).toEqual('test')
   expect(body.address).toEqual('test')
 })
 
@@ -111,7 +104,7 @@ test('PUT /tutees/:id 401', async () => {
 test('PUT /tutees/:id 404 (user)', async () => {
   const { status } = await request(app())
     .put(apiRoot + '/123456789098765432123456')
-    .send({ access_token: userSession, user: 'test', address: 'test' })
+    .send({ access_token: userSession, user_id: 'test', address: 'test' })
   expect(status).toBe(404)
 })
 

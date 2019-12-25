@@ -5,6 +5,7 @@ import passwordReset from './password-reset'
 import tutor from './tutor'
 import contract from './contract'
 import tutee from './tutee'
+import tutee from './tutee'
 
 const router = new Router()
 
@@ -36,6 +37,7 @@ router.use('/auth', auth)
 router.use('/password-resets', passwordReset)
 router.use('/tutors', tutor)
 router.use('/contracts', contract)
+router.use('/tutees', tutee)
 router.use('/tutees', tutee)
 
 export default router

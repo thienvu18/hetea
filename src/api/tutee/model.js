@@ -1,47 +1,39 @@
-import mongoose, { Schema } from "mongoose";
-import { schema as UserSchema } from "../user";
+import mongoose, { Schema } from 'mongoose'
 
-const tuteeSchema = new Schema(
-  {
-    user: {
-      type: UserSchema
-    },
-    address: {
-      type: String
-    }
+const tuteeSchema = new Schema({
+  user_id: {
+    type: String
   },
-  {
-    timestamps: true,
-    toJSON: {
-      virtuals: true,
-      transform: (obj, ret) => {
-        delete ret._id;
-      }
-    }
+  address: {
+    type: String
   }
-);
+}, {
+  timestamps: true,
+  toJSON: {
+    virtuals: true,
+    transform: (obj, ret) => { delete ret._id }
+  }
+})
 
 tuteeSchema.methods = {
-  view(full) {
+  view (full) {
     const view = {
       // simple view
       id: this.id,
-      user: this.user,
+      user_id: this.user_id,
       address: this.address,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
-    };
+    }
 
-    return full
-      ? {
-          ...view
-          // add properties for a full view
-        }
-      : view;
+    return full ? {
+      ...view
+      // add properties for a full view
+    } : view
   }
-};
+}
 
-const model = mongoose.model("Tutee", tuteeSchema);
+const model = mongoose.model('Tutee', tuteeSchema)
 
-export const schema = model.schema;
-export default model;
+export const schema = model.schema
+export default model
