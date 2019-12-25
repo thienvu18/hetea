@@ -5,22 +5,22 @@ const status = ["created", "confirm", "done"];
 const contractSchema = new Schema(
   {
     tutor: {
-      type: Object
+      type: String
     },
     tutee: {
       type: String
     },
     hours: {
-      type: String
+      type: Number
     },
     price: {
-      type: String
+      type: Number
     },
     startDate: {
-      type: String
+      type: Date
     },
     endDate: {
-      type: String
+      type: Date
     },
     status: {
       type: String,
