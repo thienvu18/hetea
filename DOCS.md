@@ -7,10 +7,24 @@
 	- [Authenticate with Facebook](#authenticate-with-facebook)
 	- [Authenticate with Google](#authenticate-with-google)
 	
+- [Contract](#contract)
+	- [Create contract](#create-contract)
+	- [Delete contract](#delete-contract)
+	- [Retrieve contract](#retrieve-contract)
+	- [Retrieve contracts](#retrieve-contracts)
+	- [Update contract](#update-contract)
+	
 - [PasswordReset](#passwordreset)
 	- [Send email](#send-email)
 	- [Submit password](#submit-password)
 	- [Verify token](#verify-token)
+	
+- [Tutee](#tutee)
+	- [Create tutee](#create-tutee)
+	- [Delete tutee](#delete-tutee)
+	- [Retrieve tutee](#retrieve-tutee)
+	- [Retrieve tutees](#retrieve-tutees)
+	- [Update tutee](#update-tutee)
 	
 - [Tutor](#tutor)
 	- [Create tutor](#create-tutor)
@@ -77,6 +91,92 @@
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>Google user accessToken.</p>							|
 
+# Contract
+
+## Create contract
+
+
+
+	POST /contracts
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| tutor			| 			|  <p>Contract's tutor.</p>							|
+| tutee			| 			|  <p>Contract's tutee.</p>							|
+| hours			| 			|  <p>Contract's hours.</p>							|
+| price			| 			|  <p>Contract's price.</p>							|
+| startDate			| 			|  <p>Contract's startDate.</p>							|
+| endDate			| 			|  <p>Contract's endDate.</p>							|
+| status			| 			|  <p>Contract's status.</p>							|
+
+## Delete contract
+
+
+
+	DELETE /contracts/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+
+## Retrieve contract
+
+
+
+	GET /contracts/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Retrieve contracts
+
+
+
+	GET /contracts
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Update contract
+
+
+
+	PUT /contracts/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| tutor			| 			|  <p>Contract's tutor.</p>							|
+| tutee			| 			|  <p>Contract's tutee.</p>							|
+| hours			| 			|  <p>Contract's hours.</p>							|
+| price			| 			|  <p>Contract's price.</p>							|
+| startDate			| 			|  <p>Contract's startDate.</p>							|
+| endDate			| 			|  <p>Contract's endDate.</p>							|
+| status			| 			|  <p>Contract's status.</p>							|
+
 # PasswordReset
 
 ## Send email
@@ -112,6 +212,82 @@
 
 	GET /password-resets/:token
 
+
+# Tutee
+
+## Create tutee
+
+
+
+	POST /tutees
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>master access token.</p>							|
+| user			| 			|  <p>Tutee's user.</p>							|
+| address			| 			|  <p>Tutee's address.</p>							|
+
+## Delete tutee
+
+
+
+	DELETE /tutees/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+
+## Retrieve tutee
+
+
+
+	GET /tutees/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Retrieve tutees
+
+
+
+	GET /tutees
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Update tutee
+
+
+
+	PUT /tutees/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| user			| 			|  <p>Tutee's user.</p>							|
+| address			| 			|  <p>Tutee's address.</p>							|
 
 # Tutor
 
@@ -181,6 +357,7 @@
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>Master access_token.</p>							|
 | q			| String			| **optional** <p>Query to search.</p>							|
 | page			| Number			| **optional** <p>Page number.</p>							|
 | limit			| Number			| **optional** <p>Amount of returned items.</p>							|
@@ -273,7 +450,7 @@
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>User access_token.</p>							|
+| access_token			| String			|  <p>Master access_token.</p>							|
 | q			| String			| **optional** <p>Query to search.</p>							|
 | page			| Number			| **optional** <p>Page number.</p>							|
 | limit			| Number			| **optional** <p>Amount of returned items.</p>							|
