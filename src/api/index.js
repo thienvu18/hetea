@@ -5,6 +5,7 @@ import passwordReset from "./password-reset";
 import tutor from "./tutor";
 import contract from "./contract";
 import tutee from "./tutee";
+import message from './message'
 
 const router = new Router();
 
@@ -37,5 +38,6 @@ router.use("/password-resets", passwordReset);
 router.use("/tutors", tutor);
 router.use("/contracts", contract);
 router.use("/tutees", tutee);
+router.use('/messages', message)
 
 export default router;

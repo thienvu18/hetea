@@ -14,6 +14,12 @@
 	- [Retrieve contracts](#retrieve-contracts)
 	- [Update contract](#update-contract)
 	
+- [Message](#message)
+	- [Create message](#create-message)
+	- [Retrieve message](#retrieve-message)
+	- [Retrieve messages](#retrieve-messages)
+	- [Update message](#update-message)
+	
 - [PasswordReset](#passwordreset)
 	- [Send email](#send-email)
 	- [Submit password](#submit-password)
@@ -42,6 +48,9 @@
 	- [Retrieve users](#retrieve-users)
 	- [Update password](#update-password)
 	- [Update user](#update-user)
+	
+- [Uttee](#uttee)
+	- [Retrieve current tutee](#retrieve-current-tutee)
 	
 
 
@@ -177,6 +186,69 @@
 | endDate			| Date			| **optional** <p>Contract's endDate.</p>							|
 | status			| String			| **optional** <p>Contract's status.</p>							|
 
+# Message
+
+## Create message
+
+
+
+	POST /messages
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| receiver			| User			|  <p>Message's receiver.</p>							|
+| content			| String			|  <p>Message's content.</p>							|
+| status			| String			| **optional** <p>Message's status.</p>							|
+
+## Retrieve message
+
+
+
+	GET /messages/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Retrieve messages
+
+
+
+	GET /messages
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Update message
+
+
+
+	PUT /messages/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| status			| 			|  <p>Message's status.</p>							|
+
 # PasswordReset
 
 ## Send email
@@ -227,7 +299,7 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>master access token.</p>							|
-| user			| 			|  <p>Tutee's user.</p>							|
+| user_id			| 			|  <p>Tutee's user_id.</p>							|
 | address			| 			|  <p>Tutee's address.</p>							|
 
 ## Delete tutee
@@ -267,7 +339,7 @@
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>admin access token.</p>							|
+| access_token			| String			|  <p>user access token.</p>							|
 | q			| String			| **optional** <p>Query to search.</p>							|
 | page			| Number			| **optional** <p>Page number.</p>							|
 | limit			| Number			| **optional** <p>Amount of returned items.</p>							|
@@ -286,7 +358,7 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>user access token.</p>							|
-| user			| 			|  <p>Tutee's user.</p>							|
+| user_id			| 			|  <p>Tutee's user_id.</p>							|
 | address			| 			|  <p>Tutee's address.</p>							|
 
 # Tutor
@@ -489,5 +561,20 @@
 | access_token			| String			|  <p>User access_token.</p>							|
 | name			| String			| **optional** <p>User's name.</p>							|
 | picture			| String			| **optional** <p>User's picture.</p>							|
+
+# Uttee
+
+## Retrieve current tutee
+
+
+
+	GET /tutees/me
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>User access_token.</p>							|
 
 
