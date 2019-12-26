@@ -87,6 +87,20 @@ router.put(
 );
 
 /**
+ * @api {put} /contracts/:id Update contract
+ * @apiName UpdateContract
+ * @apiGroup Contract
+ * @apiPermission user
+ * @apiParam {String} access_token user access token.
+ * @apiParam {String=created,confirmed,done} [status=created] Contract's status.
+ * @apiSuccess {Object} contract Contract's data.
+ * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiError 404 Contract not found.
+ * @apiError 401 user access only.
+ */
+router.put("/status/:id", token({ required: true }), body({ status }), update);
+
+/**
  * @api {delete} /contracts/:id Delete contract
  * @apiName DeleteContract
  * @apiGroup Contract
