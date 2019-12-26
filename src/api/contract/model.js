@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const status = ["created", "confirm", "done"];
+const status = ["created", "confirmed", "done"];
 
 const contractSchema = new Schema(
   {

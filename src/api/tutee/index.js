@@ -1,13 +1,13 @@
-import { Router } from 'express'
-import { middleware as query } from 'querymen'
-import { middleware as body } from 'bodymen'
-import { master, token } from '../../services/passport'
-import { create, index, show, update, destroy } from './controller'
-import { schema } from './model'
-export Tutee, { schema } from './model'
+import { Router } from "express";
+import { middleware as query } from "querymen";
+import { middleware as body } from "bodymen";
+import { master, token } from "../../services/passport";
+import { create, index, show, update, destroy, showMe } from "./controller";
+import { schema } from "./model";
+export Tutee, { schema } from "./model";
 
-const router = new Router()
-const { user_id, address } = schema.tree
+const router = new Router();
+const { user_id, address } = schema.tree;
 
 /**
  * @api {post} /tutees Create tutee
@@ -22,10 +22,17 @@ const { user_id, address } = schema.tree
  * @apiError 404 Tutee not found.
  * @apiError 401 master access only.
  */
-router.post('/',
-  master(),
-  body({ user_id, address }),
-  create)
+router.post("/", master(), body({ user_id, address }), create);
+
+/**
+ * @api {get} /tutees/me Retrieve current tutee
+ * @apiName RetrieveCurrentTutee
+ * @apiGroup Uttee
+ * @apiPermission user
+ * @apiParam {String} access_token User access_token.
+ * @apiSuccess {Object} tutee Tutee's data.
+ */
+router.get("/me", token({ required: true }), showMe);
 
 /**
  * @api {get} /tutees Retrieve tutees
@@ -39,10 +46,7 @@ router.post('/',
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 401 user access only.
  */
-router.get('/',
-  token({ required: true }),
-  query(),
-  index)
+router.get("/", token({ required: true }), query(), index);
 
 /**
  * @api {get} /tutees/:id Retrieve tutee
@@ -55,9 +59,7 @@ router.get('/',
  * @apiError 404 Tutee not found.
  * @apiError 401 user access only.
  */
-router.get('/:id',
-  token({ required: true }),
-  show)
+router.get("/:id", token({ required: true }), show);
 
 /**
  * @api {put} /tutees/:id Update tutee
@@ -72,10 +74,12 @@ router.get('/:id',
  * @apiError 404 Tutee not found.
  * @apiError 401 user access only.
  */
-router.put('/:id',
+router.put(
+  "/:id",
   token({ required: true }),
   body({ user_id, address }),
-  update)
+  update
+);
 
 /**
  * @api {delete} /tutees/:id Delete tutee
@@ -87,8 +91,6 @@ router.put('/:id',
  * @apiError 404 Tutee not found.
  * @apiError 401 admin access only.
  */
-router.delete('/:id',
-  token({ required: true, roles: ['admin'] }),
-  destroy)
+router.delete("/:id", token({ required: true, roles: ["admin"] }), destroy);
 
-export default router
+export default router;
