@@ -16,15 +16,12 @@ export const index = (
     .populate("sender")
     .populate("receiver")
     .then(messages =>
-      messages.map(message => {
-        if (
-          message.sender._id === user._id ||
-          message.receiver_id === user._id
-        ) {
-          return message.view(true);
-        }
-      })
+      messages.filter(
+        message =>
+          message.sender._id === user._id || message.receiver_id === user._id
+      )
     )
+    .then(messages => messages.map(message => message.view(true)))
     .then(success(res))
     .catch(next);
 
