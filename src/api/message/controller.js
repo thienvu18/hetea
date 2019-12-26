@@ -7,11 +7,24 @@ export const create = ({ user, bodymen: { body } }, res, next) =>
     .then(success(res, 201))
     .catch(next);
 
-export const index = ({ querymen: { query, select, cursor } }, res, next) =>
+export const index = (
+  { user, querymen: { query, select, cursor } },
+  res,
+  next
+) =>
   Message.find(query, select, cursor)
     .populate("sender")
     .populate("receiver")
-    .then(messages => messages.map(message => message.view(true)))
+    .then(messages =>
+      messages.map(message => {
+        if (
+          message.sender._id === user._id ||
+          message.receiver_id === user._id
+        ) {
+          return message.view(true);
+        }
+      })
+    )
     .then(success(res))
     .catch(next);
 
