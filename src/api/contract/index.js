@@ -98,7 +98,12 @@ router.put(
  * @apiError 404 Contract not found.
  * @apiError 401 user access only.
  */
-router.put("/status/:id", token({ required: true }), body({ status }), update);
+router.put(
+  "/status/:id",
+  token({ required: true }),
+  body({ status }),
+  updateStatus
+);
 
 /**
  * @api {delete} /contracts/:id Delete contract
