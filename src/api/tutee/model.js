@@ -1,22 +1,27 @@
-import mongoose, { Schema } from 'mongoose'
+import mongoose, { Schema } from "mongoose";
 
-const tuteeSchema = new Schema({
-  user_id: {
-    type: String
+const tuteeSchema = new Schema(
+  {
+    user_id: {
+      type: String
+    },
+    address: {
+      type: String
+    }
   },
-  address: {
-    type: String
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+      transform: (obj, ret) => {
+        delete ret._id;
+      }
+    }
   }
-}, {
-  timestamps: true,
-  toJSON: {
-    virtuals: true,
-    transform: (obj, ret) => { delete ret._id }
-  }
-})
+);
 
 tuteeSchema.methods = {
-  view (full) {
+  view(full) {
     const view = {
       // simple view
       id: this.id,
@@ -24,16 +29,18 @@ tuteeSchema.methods = {
       address: this.address,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
-    }
+    };
 
-    return full ? {
-      ...view
-      // add properties for a full view
-    } : view
+    return full
+      ? {
+          ...view
+          // add properties for a full view
+        }
+      : view;
   }
-}
+};
 
-const model = mongoose.model('Tutee', tuteeSchema)
+const model = mongoose.model("Tutee", tuteeSchema);
 
-export const schema = model.schema
-export default model
+export const schema = model.schema;
+export default model;

@@ -28,6 +28,7 @@
 - [Tutee](#tutee)
 	- [Create tutee](#create-tutee)
 	- [Delete tutee](#delete-tutee)
+	- [Retrieve current tutee](#retrieve-current-tutee)
 	- [Retrieve tutee](#retrieve-tutee)
 	- [Retrieve tutees](#retrieve-tutees)
 	- [Update tutee](#update-tutee)
@@ -48,9 +49,6 @@
 	- [Retrieve users](#retrieve-users)
 	- [Update password](#update-password)
 	- [Update user](#update-user)
-	
-- [Uttee](#uttee)
-	- [Retrieve current tutee](#retrieve-current-tutee)
 	
 
 
@@ -202,7 +200,6 @@
 | access_token			| String			|  <p>user access token.</p>							|
 | receiver			| User			|  <p>Message's receiver.</p>							|
 | content			| String			|  <p>Message's content.</p>							|
-| status			| String			| **optional** <p>Message's status.</p>							|
 
 ## Retrieve message
 
@@ -247,7 +244,7 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>user access token.</p>							|
-| status			| 			|  <p>Message's status.</p>							|
+| status			| String			|  <p>Message's status.</p>							|
 
 # PasswordReset
 
@@ -314,6 +311,19 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>admin access token.</p>							|
+
+## Retrieve current tutee
+
+
+
+	GET /tutees/me
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>User access_token.</p>							|
 
 ## Retrieve tutee
 
@@ -561,20 +571,5 @@
 | access_token			| String			|  <p>User access_token.</p>							|
 | name			| String			| **optional** <p>User's name.</p>							|
 | picture			| String			| **optional** <p>User's picture.</p>							|
-
-# Uttee
-
-## Retrieve current tutee
-
-
-
-	GET /tutees/me
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>User access_token.</p>							|
 
 

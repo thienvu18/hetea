@@ -27,7 +27,7 @@ router.post("/", master(), body({ user_id, address }), create);
 /**
  * @api {get} /tutees/me Retrieve current tutee
  * @apiName RetrieveCurrentTutee
- * @apiGroup Uttee
+ * @apiGroup Tutee
  * @apiPermission user
  * @apiParam {String} access_token User access_token.
  * @apiSuccess {Object} tutee Tutee's data.
